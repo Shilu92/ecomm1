@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+{% if category %}
+<div>
+    <div>
+        <p class="text-centre"><a href="{% url 'home' %}">Our Categories</a></p>
+    </div>
+
+</div>
+{% endif %}
+<div>
+    {% if category %}
+    <img src="{{category.image.url}}" style="width:500px;height:500px">
+
+</div>
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.description}}</p>
+</div>
+{% else %}
+<div>
+<img src = "{% static 'Images/image.jpg' %}" alt = "Wallpaper_Image" style = "width:1500px; height:800px">
+
+</div>
+
+<div>
+    <h1 style = "text-align:center;color:red"> Uncover Endless Choices, One Click Away</h1>
+    <p> Welcome to E-Store, where your online shopping experience reaches new heights! We take pride in offering a curated selection of premium products, ensuring you have access to endless choices right at your fingertips. From fashion-forward apparel to cutting-edge electronics, home essentials, and lifestyle treasures, E-Store is your go-to destination for quality and convenience. Embrace the ease of one-click shopping as you uncover a world of possibilities, carefully chosen for their style, functionality, and unrivaled value. Whether you're upgrading your wardrobe, enhancing your home, or discovering the latest trends, E-Store is committed to delivering a seamless, delightful shopping experience. Your journey to unparalleled choices begins here – explore, select, and indulge in the best with E-Store!</p>
+</div>
+{% endif %}
+<div class="container">
+    <div class="row">
+    {% for product in products %}
+    <div class="card" style="width:18rem;">
+    <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="width:100px; height:100px;">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.price}}</p>
+      <a href="#" class="btn btn-primary">Add to Cart</a>
+   </div>
+   </div>
+
+    {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}
+
+
